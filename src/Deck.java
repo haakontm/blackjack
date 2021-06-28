@@ -2,12 +2,12 @@ import java.util.Collections;
 import java.util.Stack;
 
 public class Deck {
-    Stack<Card> stackOfCards = new Stack<Card>();
+    private Stack<Card> stackOfCards = new Stack<>();
 
     // this constructor creates a new ordered deck of cards
     public Deck() {
-        char suit[] = {'C', 'D', 'H', 'S'};
-        char value[] = ("A234567891JQK").toCharArray();
+        char[] suit = {'C', 'D', 'H', 'S'};
+        char[] value = ("A234567891JQK").toCharArray();
 
         for (int i = 0; i < 4; i++) {  // loop through suits
             for (int j = 0; j < 13; j++) {  // loop through values

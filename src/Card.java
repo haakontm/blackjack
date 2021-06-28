@@ -5,15 +5,11 @@ public class Card {
     public Card(String t_name) {
         this.name = t_name;
 
-        switch (t_name.charAt(1)) {  // last character in name decides value
-            case 'J', 'Q', 'K':
-                value = 10;
-                break;
-            case 'A':
-                value = 11;
-                break;
-            default:
-                value = Integer.parseInt(t_name.substring(1));
+        // last character in name decides value
+        switch (t_name.charAt(1)) {
+            case 'J', 'Q', 'K' -> value = 10;
+            case 'A' -> value = 11;
+            default -> value = Integer.parseInt(t_name.substring(1));
         }
     }
 
