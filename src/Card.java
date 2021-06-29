@@ -12,12 +12,4 @@ public class Card {
             default -> value = Integer.parseInt(t_name.substring(1));
         }
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getValue() {
-        return value;
-    }
 }

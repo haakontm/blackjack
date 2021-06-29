@@ -1,8 +1,9 @@
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class Deck {
-    private Stack<Card> stackOfCards = new Stack<>();
+    private LinkedList<Card> stackOfCards = new LinkedList<>();
 
     // this constructor creates a new ordered deck of cards
     public Deck() {
@@ -27,7 +28,11 @@ public class Deck {
     }
 
     public Deck(String order) {
+        String[] cards = order.split(", ");
 
+        for (String card : cards) {
+            stackOfCards.addLast(new Card(card));
+        }
     }
 
     public void shuffle() {
@@ -42,7 +47,7 @@ public class Deck {
     // prints out the entire deck of cards
     public void print() {
         stackOfCards.forEach(card -> {
-            System.out.print(card.getName() + ", ");
+            System.out.print(card.name + ", ");
         });
         System.out.println("\n");
     }

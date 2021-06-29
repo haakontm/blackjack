@@ -1,37 +1,29 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Player {
     String name;
-    ArrayList<Card> cards = new ArrayList<>();
+    Queue<Card> cards = new LinkedList<>();
     Integer score = 0;
-    Boolean hit = true;
-    Boolean blackjack = false;
-    Boolean busted = false;
 
     public Player(String t_name) {
         name = t_name;
     }
 
     public void addCard(Card t_card) {
-        score += t_card.getValue();
+        score += t_card.value;
         cards.add(t_card);
-
-        if (score >= 17) {
-            hit = false;
-            if (score == 21) {
-                blackjack = true;
-            }
-            else if (score > 21) {
-                busted = true;
-            }
-        }
     }
 
     public void win() {
         System.out.println(name);
     }
 
-    public int getScore() {
-        return score;
+    public void printCards() {
+        System.out.print(name + ": ");
+        while (cards.size() > 1) {
+            Card card = cards.poll();
+            System.out.print(card.name + ", ");
+        }
+        System.out.println(Objects.requireNonNull(cards.poll()).name);
     }
 }
