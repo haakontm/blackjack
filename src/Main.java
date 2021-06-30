@@ -9,7 +9,7 @@ public class Main {
         deck.shuffle();
 
         // if the user has given an argument, we read the deck from a file
-        if (args.length > 0) {
+        if (args.length == 1) {
             try {
                 File file = new File(args[0]);
                 Scanner scanner = new Scanner(file);
@@ -23,6 +23,10 @@ public class Main {
                 e.printStackTrace();
                 System.exit(-1);
             }
+        }
+        else if (args.length > 1) {
+            System.out.println("One or less arguments expected.");
+            System.exit(-1);
         }
 
         Player sam = new Player("sam");
