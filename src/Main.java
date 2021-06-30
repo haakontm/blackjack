@@ -34,32 +34,29 @@ public class Main {
         sam.addCard(deck.draw());
         dealer.addCard(deck.draw());
 
-        // dealer wins if both players bust on the first draw
-        if (sam.score == 22 && dealer.score == 22) {
-            dealer.win();
-        }
-        else if(sam.score == 21) {  // sam always wins with blackjack on first hand
+        // check if there are any winners after first draw
+        if ((dealer.score == 22 || sam.score == 21) && sam.score != 22) {
             sam.win();
         }
-        else if (dealer.score == 21) {
+        else if (sam.score == 22 || dealer.score == 21) {
             dealer.win();
         }
 
-        // if we get here, then we can start drawing cards from the deck
+        // neither player wins after first hand. sam will start drawing cards
         else {
             while (sam.score < 17) {
                 sam.addCard(deck.draw());
             }
 
-            if (sam.score > 21) {
+            if (sam.score > 21) {  // sam busts
                 dealer.win();
             }
-            else {
-                while (dealer.score < sam.score) {
+            else {  // dealer will now draw cards
+                while (dealer.score <= sam.score) {
                     dealer.addCard(deck.draw());
                 }
 
-                if (dealer.score <= 21 && dealer.score > sam.score) {
+                if (dealer.score <= 21) {
                     dealer.win();
                 }
                 else {
