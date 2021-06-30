@@ -69,7 +69,7 @@ public class Main {
             }
         }
 
-        sam.printCards();
-        dealer.printCards();
+        sam.printHand();
+        dealer.printHand();
     }
 }

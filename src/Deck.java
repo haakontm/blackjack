@@ -1,11 +1,15 @@
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.Stack;
 
+/**
+ * This class will contain Card objects to form a deck
+ */
 public class Deck {
     private LinkedList<Card> stackOfCards = new LinkedList<>();
 
-    // this constructor creates a new ordered deck of cards
+    /**
+     * constructor creates a new ordered deck of cards
+     */
     public Deck() {
         char[] suit = {'C', 'D', 'H', 'S'};
         char[] value = ("A234567891JQK").toCharArray();
@@ -27,6 +31,11 @@ public class Deck {
         }
     }
 
+    /**
+     * constructor will create a deck based on a predefined order
+     *
+     * @param order sequence of cards to be added. Example: S5, D6, C5, H9, H7, C2, D3, ...
+     */
     public Deck(String order) {
         String[] cards = order.split(", ");
 
@@ -35,16 +44,23 @@ public class Deck {
         }
     }
 
+    /**
+     * Creates a new random permutation of the cards in the deck
+     */
     public void shuffle() {
         Collections.shuffle(stackOfCards);
     }
 
-    // removes and returns the card on the top of the deck
+    /**
+     * @return removes and returns the card on the top of the deck
+     */
     public Card draw() {
         return stackOfCards.pop();
     }
 
-    // prints out the entire deck of cards
+    /**
+     * prints out the entire deck of cards
+     */
     public void print() {
         stackOfCards.forEach(card -> {
             System.out.print(card.name + ", ");
